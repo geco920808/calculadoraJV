@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public class CalculadoraServlet extends HttpServlet {
 
+    // Método doPost para manejar los formularios enviados por POST
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtener los valores de los parámetros del formulario
@@ -41,6 +42,14 @@ public class CalculadoraServlet extends HttpServlet {
 
         // Redireccionar a la página JSP para mostrar el resultado
         RequestDispatcher dispatcher = request.getRequestDispatcher("resultado.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    // Método doGet para manejar solicitudes GET
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Redireccionar al formulario de la calculadora
+        RequestDispatcher dispatcher = request.getRequestDispatcher("calculadora.jsp");
         dispatcher.forward(request, response);
     }
 }
