@@ -1,19 +1,37 @@
-<web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    
+    <!-- Configuración del servlet para la calculadora -->
     <servlet>
         <servlet-name>CalculadoraServlet</servlet-name>
         <servlet-class>com.calculadora.CalculadoraServlet</servlet-class>
     </servlet>
+    
+    <!-- Mapeo de la URL para la calculadora -->
     <servlet-mapping>
         <servlet-name>CalculadoraServlet</servlet-name>
         <url-pattern>/CalculadoraServlet</url-pattern>
     </servlet-mapping>
 
+    <!-- Configuración del servlet para el formulario de registro -->
     <servlet>
         <servlet-name>DatosServlet</servlet-name>
         <servlet-class>com.calculadora.DatosServlet</servlet-class>
     </servlet>
+    
+    <!-- Mapeo de la URL para el formulario de registro -->
     <servlet-mapping>
         <servlet-name>DatosServlet</servlet-name>
         <url-pattern>/DatosServlet</url-pattern>
     </servlet-mapping>
+
+    <!-- Página de inicio del proyecto -->
+    <welcome-file-list>
+        <welcome-file>calculadora.jsp</welcome-file>
+    </welcome-file-list>
+
 </web-app>
