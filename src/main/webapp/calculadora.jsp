@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Calculadora Web</title>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
 </head>
 <body>
-    <h1>Calculadora</h1>
+    <h2>Calculadora</h2>
     <form action="CalculadoraServlet" method="POST">
-        Número 1: <input type="text" name="num1" required><br><br>
-        Número 2: <input type="text" name="num2" required><br><br>
-        Operación:
-        <select name="operacion">
+        <label for="num1">Número 1:</label>
+        <input type="number" id="num1" name="num1" required><br>
+        
+        <label for="num2">Número 2:</label>
+        <input type="number" id="num2" name="num2" required><br>
+
+        <label for="operacion">Operación:</label>
+        <select id="operacion" name="operacion">
             <option value="sumar">Sumar</option>
             <option value="restar">Restar</option>
             <option value="multiplicar">Multiplicar</option>
             <option value="dividir">Dividir</option>
-        </select><br><br>
+        </select><br>
+
         <input type="submit" value="Calcular">
     </form>
 </body>

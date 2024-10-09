@@ -4,19 +4,15 @@ import java.io.IOException;
 
 public class CalculadoraServlet extends HttpServlet {
 
-    // Método doPost para manejar los formularios enviados por POST
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtener los valores de los parámetros del formulario
+        // Obtener los parámetros del formulario
         double num1 = Double.parseDouble(request.getParameter("num1"));
         double num2 = Double.parseDouble(request.getParameter("num2"));
         String operacion = request.getParameter("operacion");
 
-        // Variable para almacenar el resultado
+        // Lógica de la operación
         double resultado = 0;
-        String mensaje = null;
-
-        // Realizar la operación seleccionada
         switch (operacion) {
             case "sumar":
                 resultado = num1 + num2;
@@ -28,27 +24,18 @@ public class CalculadoraServlet extends HttpServlet {
                 resultado = num1 * num2;
                 break;
             case "dividir":
-                if (num2 != 0) {
-                    resultado = num1 / num2;
-                } else {
-                    mensaje = "No se puede dividir por cero";
-                }
+                resultado = num2 != 0 ? num1 / num2 : 0;
                 break;
         }
 
-        // Pasar los resultados al JSP para mostrarlos en la respuesta
+        // Redirigir a la página de resultados con los datos
         request.setAttribute("resultado", resultado);
-        request.setAttribute("mensaje", mensaje);
-
-        // Redireccionar a la página JSP para mostrar el resultado
         RequestDispatcher dispatcher = request.getRequestDispatcher("resultado.jsp");
         dispatcher.forward(request, response);
     }
 
-    // Método doGet para manejar solicitudes GET
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Redireccionar al formulario de la calculadora
         RequestDispatcher dispatcher = request.getRequestDispatcher("calculadora.jsp");
         dispatcher.forward(request, response);
     }
